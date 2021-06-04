@@ -1,35 +1,36 @@
-/*--- Harlan Bowling's Wordpress Reset  ---*/
-/*--- Version: 4.0 - 5.25.18 ---*/
+/*--- Harlan Bowling's Wordpress Reset - paradigmcreative.com ---*/
+/*--- Version: 4.1 - 3.10.21 ---*/
 
+// Contains SCSS Variables for all Stylesheets
+
+// Responsive Breakpoints
+$portrait: "(min-width:550px)"; // Portrait and Above
+$tablet: "(min-width:800px)"; // Tablet Landscape and Above
+$desktop: "(min-width:1024px)"; // Desktop and Above
+$widescreen: "(min-width:1250px)"; // Large Devices
+
+// Fonts Available: Karla - Variable 200-800
+$headlinestack: 700 1rem/1.65 'Karla', sans-serif;
+$primarystack: 400 1rem/1.65 'Karla', sans-serif;
+
+// Color Scheme
+$black: #282828 !default;
+$white: #FFFFFF !default;
+$offwhite: #DDDDDD !default;
+$grey: #565656 !default;
+$primaryaccent: #00A8f0 !default; // Blue
+
+// Animations & Transitions
+@mixin transition { -moz-transition: all 0.5s ease-in 0s; -webkit-transition: all 0.5s ease-in 0s; -o-transition: all 0.5s ease-in 0s; transition: all 0.5s ease-in 0s; }
+@mixin transition-fast { -moz-transition: all 0.2s ease-in 0s; -webkit-transition: all 0.2s ease-in 0s; -o-transition: all 0.2s ease-in 0s; transition: all 0.2s ease-in 0s; }
+@mixin animation { animation-play-state: paused; animation-delay: calc(var(--scroll) * -1s); animation-iteration-count: 1; animation-fill-mode: both; }
+
+// Default Components
+%button { display:inline-block; margin:0 0 8px; padding:12px 18px !important; text-transform:uppercase; letter-spacing: 0.1em; text-align: center; color:$white; background-image:linear-gradient(120deg,$primaryaccent 100%,$primaryaccent 0%); background-repeat:no-repeat; background-size:100% 100%; background-position:100% 0; border:2px solid $primaryaccent !important; @include transition; }
+%buttonhover { color:$primaryaccent; background-size:0rem 100%; }
+%input { width:100%; margin-bottom:20px; padding:16px; border:1px solid $grey; box-sizing: border-box; background:$white; color:$black; @include transition; }
 
 /** * Eric Meyer's Reset CSS v2.0 (http://meyerweb.com/eric/tools/css/reset/) * http://cssreset.com */html, body, div, span, applet, object, iframe,h1, h2, h3, h4, h5, h6, p, blockquote, pre,a, abbr, acronym, address, big, cite, code,del, dfn, em, img, ins, kbd, q, s, samp,small, strike, strong, sub, sup, tt, var,b, u, i, center,dl, dt, dd, ol, ul, li,fieldset, form, label, legend,table, caption, tbody, tfoot, thead, tr, th, td,article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary,time, mark, audio, video {  margin: 0;  padding: 0; border: 0;  font-size: 100%;  font: inherit;  vertical-align: baseline;}/* HTML5 display-role reset for older browsers */article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {  display: block;}body {  line-height: 1;}ol, ul {  list-style: none;}blockquote, q { quotes: none;}blockquote:before, blockquote:after,q:before, q:after { content: '';  content: none;}table {  border-collapse: collapse;  border-spacing: 0;}
-
-/*
-
-Fonts
-Lato - 300, 700
-Libre Baskerville - 400, 700
-
-*/
-
-
-$white: #ffffff;
-$offwhite: #f5f5f5;
-$grey: #484848;
-$black: #000000;
-$red: #a11d21;
-$green: #1b5c2e;
-
-$headlinestack: 700 1em/1.5 'Lora', serif;
-$primarystack: 400 1em/1.5 'Lora', serif;
-
-
-@mixin transition { -moz-transition: all 0.5s ease 0s; -webkit-transition: all 0.5s ease 0s; -o-transition: all 0.5s ease 0s; transition: all 0.5s ease 0s; }
-%button { cursor:pointer; display:inline-block; margin:0; padding:20px 36px; font: $primarystack; text-transform:uppercase; font-size:1em; color:$white; background:$red; text-align: center; border-radius:500px; }
-%input { font: $primarystack; width:100%; padding:12px; border:none; box-sizing: border-box; background:$offwhite; color:$grey; @include transition; margin-bottom:12px; }
-
-
-
 
 /*------------------------------------------------------------------------------*/
 /*--------------------------RESPONSIVE SCAFFOLDING------------------------------*/
@@ -50,19 +51,19 @@ $primarystack: 400 1em/1.5 'Lora', serif;
 .hidden, .hidden-mobile, .hidden-portraitanddown, .visible-desktop, .visible-tablet, .visible-portrait, .visible-tabletandup { display: none; }
 
 /* Portrait Tablets */
-@media (min-width: 550px) {
+@media #{$portrait} {
   .hidden-mobile, .visible-portrait { display:block; }
   .hidden-portrait, .visible-mobile { display: none; }
 }
 
 /* Landscape Tablet */
-@media (min-width: 850px) {
+@media #{$tablet} {
   .hidden-portrait, .hidden-portraitanddown, .visible-tablet, .visible-tabletandup { display:block; }
   .hidden-tablet, .visible-portrait, .visible-portraitanddown { display: none; }
 }
 
 /* Desktop */
-@media (min-width: 1024px) {
+@media #{$desktop} {
   .hidden-tablet, .visible-desktop { display:block; }
   .hidden-desktop, .visible-tablet { display:none; }
 }
@@ -86,7 +87,7 @@ input:focus, textarea:focus, button:hover { border-color: #777 #ccc #ccc #777; }
 
 .clearfix { clear:both; }
 .spacing { clear:both; height:40px; }
-hr { margin:40px 0; clear:both; border-top:2px solid #000; width:100%; }
+hr { margin:60px 0; clear:both; border-top:2px solid; width:100%; }
 
 .alignleft { float:left; margin:6px 20px 20px 0; }
 .alignright { float:right; margin:6px 0 20px 20px; }
@@ -95,76 +96,33 @@ hr { margin:40px 0; clear:both; border-top:2px solid #000; width:100%; }
 
 em, i { font-style:italic; }
 strong, b { font-weight:700; }
-.largertext, .larger { font-size:1.5em; line-height:1; }
-.smallertext, .smaller, small { font-size:0.8em; line-height: 1; }
-.textleft { text-align: left; }
+.largertext, .larger { font-size:1.5rem; line-height:1.75em; }
+.smallertext, .smaller, small { font-size:0.8rem; }
 .textcenter { text-align: center; }
 .textright { text-align: right; }
+.textleft { text-align: left; }
 
 #wpstats { display:none; }
-.wp-caption { max-width: 100%; }
+.wp-caption, .wp-block-image figcaption { max-width: 100%; font-size:0.9em; text-transform: uppercase; }
+
+code { background:#eee; padding:40px; margin:0 0 40px; font-size:0.8rem; }
 
 .transition { @include transition; }
 
 img { max-width:100%; height:auto; }
 iframe { width:100%; height:auto; margin:0 auto 20px; }
 
-.ms-sizer, .ms-item { width: 23.5%; }
-.ms-item { margin-bottom:18px; }
-.ms-item--width2 { width: 48.5%; }
-.ms-item--width3 { width: 73.5%; }
-
-.sticky { position:fixed; top:0; width:100%; z-index:9999; }
-.sticky + .stickypad { padding-top: 45px; }
-
-/* Common Blog Post Navigation */
-.postnavigation { 
-  width:100%; margin:80px 0; text-align:center;
-  
-  ul { margin:0 !important; padding:0; }
-  li { display: inline; }
-  li a, li a:hover, li.active a, li.disabled { color: #fff; font:$primarystack; text-transform:uppercase; text-decoration:none; background-color: #000; border-radius: 3px; margin:0 4px; cursor: pointer; padding: 0.75rem 1.25rem; @include transition }
-  li a:hover, li.active a { background-color:red; }
-  }
-
 .alert { color:red; font-weight:bold; font-size:1.5em; }
 
-.mask { position:absolute; z-index:1; background:rgba(0,0,0,0.5); top:0; left:0; width:100%; height:100%; }
+.mask { position:absolute; z-index:1; background:rgba(0,0,0,0.3); top:0; left:0; width:100%; height:100%; }
+.mask.accent { background:$primaryaccent; opacity:0.65; }
 
-section.content { 
+section.content, aside { 
 
-  ul, ol { margin:0 0 40px 30px; }
+  ul, ol { margin:0 0 40px 8%; max-width:70%; }
   ol ul { margin:5px 0 5px 30px; }
-  ul li, ol ul li { list-style-type: none; margin:0 0 5px; }
-  ul li:before { content:'+'; display:inline-block; margin-right:10px; color:$red; }
+  ul li, ol ul li { list-style-type: disc; margin:0 0 5px; }
   ol li { list-style-type: decimal; margin:0 0 5px; }
+  ul.wp-block-gallery { margin:0 0 40px; }
+  li ul, li ol { margin:6px 0 12px 30px; }
   }
-
-.fancybox-bg { background:#000; }
-.fancybox-button { background:rgba(245,245,245,0.9); background-clip:content-box; }
-.fancybox-button:hover { color:black; }
-
-
-
-
-
-
-/* Small Desktop */
-@media (max-width: 1024px) {
-
-
-
-}
-
-/* Portrait Tablet and Lower */
-@media (max-width: 769px) {
-
-
-}
-
-/* Phone */
-@media (max-width: 481px) {
-
-
-}
-
